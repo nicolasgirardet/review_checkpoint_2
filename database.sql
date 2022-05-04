@@ -61,3 +61,28 @@ ALTER TABLE `item`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+CREATE TABLE Student (
+	id int primary key auto_increment,
+    firstname varchar(100) not null,
+    lastname varchar(100) not null,
+    photo varchar(250) not null,
+    class_id int
+);
+
+CREATE TABLE Class (
+	id int primary key auto_increment,
+    name varchar(100) not null,
+    city varchar(100) not null
+);
+
+
+ALTER TABLE Student
+ADD CONSTRAINT FK_Student_Class
+FOREIGN KEY (class_id)
+REFERENCES Class(id);
+
+
+INSERT INTO Class (name, city)
+VALUES ('PHP', 'Lyon'), ('JS', 'Lyon'), ('Data', 'Paris');
